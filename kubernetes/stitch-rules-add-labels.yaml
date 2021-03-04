@@ -17,9 +17,7 @@ spec:
                }
               }
             }
-      - type: k8s.MacroFreemarkerAddLabels
-        description: "Adding freemarker macro"
-        weight: 10
+      - type: freemarker
+        description: "Adding app and env label"
         parameters:
-          application: "#{#ctx.getCurrentDeployedApplication().getName()}"
-          environment: "#{#ctx.getCurrentDeployedApplication().getEnvironment().getName()}"
+          templateFile: macro/label-template.ftl
