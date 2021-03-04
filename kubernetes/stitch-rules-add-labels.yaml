@@ -1,3 +1,4 @@
+kind: Rules
 metadata:
   namespace: k8s-freemarker-template
 spec:
