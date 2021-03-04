@@ -7,13 +7,19 @@ spec:
       deployedType: k8s.Resources
       expression: "#input.getStringValue('$.kind') == 'Deployment'"
     processor:
-     - type: freemarker
-       description: "Adding label to kubernetes spec"
-       parameters:
+      - type: freemarker
+        description: "Adding label to kubernetes spec"
+        parameters:
           template: |
             { "metadata" : {
                "labels": {
-                 "application": "#ctx.getCurrentDeployedApplication().getName()"
+                 "application": "name"
                }
               }
             }
+      - type: k8s.MacroFreemarkerAddLabels
+        description: "Adding freemarker macro"
+        weight: 10
+        parameters:
+          application: "#{#ctx.getCurrentDeployedApplication().getName()}"
+          environment: "#{#ctx.getCurrentDeployedApplication().getEnvironment().getName()}"
