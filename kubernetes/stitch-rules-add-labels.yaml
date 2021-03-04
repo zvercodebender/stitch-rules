@@ -13,7 +13,7 @@ spec:
           template: |
             { "metadata" : {
                "labels": {
-                 "myApplication": "name"
+                 "myApplication": "${ctx.getCurrentDeployedApplication().getName()}"
                }
               }
             }
