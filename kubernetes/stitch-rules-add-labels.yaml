@@ -1,15 +1,13 @@
-kind: Rules
 metadata:
-  namespace: Kubernetes-Demo
+  namespace: k8s-freemarker-template
 spec:
-  - name: "k8s.AddFreemarkerJsonPathLabels"
-    description: "Add a stitch label to a resource"
+  - name: "k8s.AddFreemarkerLabels"
     condition:
       deployedType: k8s.Resources
       expression: "#input.getStringValue('$.kind') == 'Deployment'"
     processor:
       - type: k8s.MacroFreemarkerAddLabels
-        description: "Adding label to kubernetes with freemarker macro"
+        description: "Adding freemarker macro"
         weight: 10
         parameters:
           application: "#{#ctx.getCurrentDeployedApplication().getName()}"
