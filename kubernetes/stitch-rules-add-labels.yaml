@@ -11,5 +11,5 @@ spec:
         description: "Adding freemarker macro"
         weight: 10
         parameters:
-          application: "#{#ctx.getCurrentDeployedApplication().getName()}"
-          environment: "#{#ctx.getCurrentDeployedApplication().getEnvironment().getName()}"
+          application: "#ctx.getCurrentDeployedApplication().getName()"
+          environment: "#ctx.getCurrentDeployedApplication().getEnvironment().getName()"
