@@ -10,7 +10,6 @@ spec:
     processor:
       - type: k8s.MacroFreemarkerAddLabels
         description: "Adding label to kubernetes with freemarker macro"
-        description: "Adding freemarker macro"
         weight: 10
         parameters:
           application: "#{#ctx.getCurrentDeployedApplication().getName()}"
