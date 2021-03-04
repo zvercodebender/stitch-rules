@@ -1,0 +1,20 @@
+kind: Rules
+metadata:
+  namespace: Kubernetes-Demo
+spec:
+  - name: "k8s.SetProperIngress"
+    description: "Set Propper Ingress URL for test-test"
+    condition:
+      deployedType: k8s.Resources
+      expression: "#input.getStringValue('$.kind') == 'Ingress' && #ctx.currentDeployedApplication.environment.name == 'rancher-test-test'"
+    processor:
+      - type: patch
+        description: "Change Ingresss URL"
+        phase: POST_FLIGHT
+        merge:
+          type: overlay
+        parameters:
+          patch:
+            - op: replace
+              path: "/spec/rules/0/host"
+              value: "broker-bistro.192.168.17.11.xip.io"
