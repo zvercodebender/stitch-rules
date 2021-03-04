@@ -16,5 +16,5 @@ spec:
         parameters:
           template: |
             {
-              "environment": "#ctx.currentDeployedApplication.environment.name"
+              "environment": #ctx.currentDeployedApplication.environment.name
             }
