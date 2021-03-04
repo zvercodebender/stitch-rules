@@ -2,7 +2,7 @@
     "metadata" : {
         "labels": {
             "appName": "${ctx.getCurrentDeployedApplication().getName()}",
-            "envName": "${params.environment}",
+            "envName": "${ctx.getCurrentDeployedApplication().getEnvironment().getName()}"
         }
     }
 }
