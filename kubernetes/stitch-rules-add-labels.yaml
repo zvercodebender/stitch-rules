@@ -11,5 +11,5 @@ spec:
         description: "Adding freemarker macro"
         phase: POST_FLIGHT
         parameters:
-          application: "#{#ctx.getCurrentDeployedApplication().getName()}"
-          environment: "#{#ctx.getCurrentDeployedApplication().getEnvironment().getName()}"
+          application: "app"
+          environment: "env"
