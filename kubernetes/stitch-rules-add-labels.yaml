@@ -7,9 +7,13 @@ spec:
       deployedType: k8s.Resources
       expression: "#ctx.deployedApplication.environment.name == 'rancher-test-dev'"
     processor:
-      - type: k8s.MacroFreemarkerAddLabels
-        description: "Adding freemarker macro"
-        phase: POST_FLIGHT
+     - type: freemarker
+        description: "Adding label to kubernetes spec"
         parameters:
-          application: "app"
-          environment: "env"
+          template: |
+            { "metadata" : {
+               "labels": {
+                 "myLabel": "myValue"
+               }
+              }
+            }
