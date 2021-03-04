@@ -8,7 +8,7 @@ spec:
       deployedType: k8s.Resources
       expression: "#input.getStringValue('$.kind') == 'Deployment'"
     processor:
-      - type: freemarker
+      - type: k8s.MacroFreemarkerAddLabels
         description: "Adding label to kubernetes with freemarker macro"
         description: "Adding freemarker macro"
         weight: 10
