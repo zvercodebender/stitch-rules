@@ -13,7 +13,7 @@ spec:
           template: |
             { "metadata" : {
                "labels": {
-                 "application": "name"
+                 "myApplication": "name"
                }
               }
             }
