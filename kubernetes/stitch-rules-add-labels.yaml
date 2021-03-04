@@ -8,8 +8,8 @@ spec:
       expression: "#ctx.deployedApplication.environment.name == 'rancher-test-dev'"
     processor:
      - type: freemarker
-        description: "Adding label to kubernetes spec"
-        parameters:
+       description: "Adding label to kubernetes spec"
+       parameters:
           template: |
             { "metadata" : {
                "labels": {
