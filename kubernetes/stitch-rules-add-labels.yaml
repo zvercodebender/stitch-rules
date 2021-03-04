@@ -9,12 +9,9 @@ spec:
       expression: "#input.getStringValue('$.kind') == 'Deployment'"
     processor:
       - type: freemarker
-        description: "Adding label to kubernetes spec using jsonpath"
-        merge:
-          type: jsonpath
-          path: "$.metadata.labels"
+        description: "Adding label to kubernetes with freemarker macro"
+        description: "Adding freemarker macro"
+        weight: 10
         parameters:
-          template: |
-            {
-              "environment": #ctx.currentDeployedApplication.environment.name
-            }
+          application: "#{#ctx.getCurrentDeployedApplication().getName()}"
+          environment: "#{#ctx.getCurrentDeployedApplication().getEnvironment().getName()}"
