@@ -5,6 +5,7 @@ spec:
   - name: "k8s.AddFreemarkerLabels"
     condition:
       deployedType: k8s.Resources
+      expression: "#ctx.deployedApplication.environment.name == 'rancher-test-dev'"
     processor:
       - type: freemarker
         description: "Adding label to kubernetes spec"
