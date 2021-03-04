@@ -1,7 +1,7 @@
 {
     "metadata" : {
         "labels": {
-            "appName": "${params.application}",
+            "appName": "#{#ctx.getCurrentDeployedApplication().getName()}",
             "envName": "${params.environment}",
         }
     }
