@@ -1,11 +1,11 @@
 kind: Rules
 metadata:
-  namespace: k8s-freemarker-template
+  namespace: Kubernetes-Demo
 spec:
   - name: "k8s.AddFreemarkerLabels"
     condition:
       deployedType: k8s.Resources
-      expression: "#ctx.deployedApplication.environment.name == 'kubernetes-env'"
+      expression: "#input.getStringValue('$.kind') == 'Deployment'"
     processor:
       - type: freemarker
         description: "Adding label to kubernetes spec"
