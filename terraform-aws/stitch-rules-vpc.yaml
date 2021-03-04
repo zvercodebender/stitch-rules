@@ -5,7 +5,6 @@ spec:
   - name: "k8s.ChangeVPCName-json"
     condition:
       deployedType: terraform.ExecutedModule
-      expression: "#ctx.getCurrentDeployedApplication().getName() == 'tf-aws-json' && #input.getJsonNode(\"$.resource.aws_vpc.terraform_vpc\") != null"
     processor:
       - type: freemarker
         description: "change tag name of vpc"
