@@ -7,32 +7,9 @@ spec:
       deployedType: k8s.Resources
       expression: "#ctx.deployedApplication.environment.name == 'rancher-test-dev'"
     processor:
-      - type: freemarker
-        description: "Adding label to kubernetes spec"
-        parameters:
-          template: |
-            { "metadata" : {
-               "labels": {
-                 "myLabel": "myValue"
-               }
-              }
-            }
-      - type: freemarker
-        description: "Adding first label to kubernetes spec"
-        phase: BASE_DEFINITION
-        merge:
-          type: overlay
-        parameters:
-          template: |
-            { "metadata" : {
-               "labels": {
-                 "overridenLabel": "initialValue"
-               }
-              }
-            }
       - type: k8s.MacroFreemarkerAddLabels
         description: "Adding freemarker macro"
-        weight: 10
+        phase: POST_FLIGHT
         parameters:
           application: "#{#ctx.getCurrentDeployedApplication().getName()}"
           environment: "#{#ctx.getCurrentDeployedApplication().getEnvironment().getName()}"
