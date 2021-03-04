@@ -5,11 +5,34 @@ spec:
   - name: "k8s.AddFreemarkerLabels"
     condition:
       deployedType: k8s.Resources
-      expression: "#input.getStringValue('$.kind') == 'Deployment'"
+      expression: "#ctx.deployedApplication.environment.name == 'kubernetes-env'"
     processor:
+      - type: freemarker
+        description: "Adding label to kubernetes spec"
+        parameters:
+          template: |
+            { "metadata" : {
+               "labels": {
+                 "myLabel": "myValue"
+               }
+              }
+            }
+      - type: freemarker
+        description: "Adding first label to kubernetes spec"
+        phase: BASE_DEFINITION
+        merge:
+          type: overlay
+        parameters:
+          template: |
+            { "metadata" : {
+               "labels": {
+                 "overridenLabel": "initialValue"
+               }
+              }
+            }
       - type: k8s.MacroFreemarkerAddLabels
         description: "Adding freemarker macro"
         weight: 10
         parameters:
-          application: "#ctx.getCurrentDeployedApplication().getName()"
-          environment: "#ctx.getCurrentDeployedApplication().getEnvironment().getName()"
+          application: "#{#ctx.getCurrentDeployedApplication().getName()}"
+          environment: "#{#ctx.getCurrentDeployedApplication().getEnvironment().getName()}"
