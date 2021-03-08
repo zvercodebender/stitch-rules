@@ -2,20 +2,20 @@ kind: Rules
 metadata:
   namespace: Terraform-AWS-Demo
 spec:
-  - name: "k8s.ChangeVPCName-json"
+  - name: "k8s.ChangeInstanceName-json"
     condition:
       deployedType: terraform.ExecutedModule
     processor:
       - type: freemarker
-        description: "change tag name of vpc"
+        description: "change tag name of instance"
         phase: PATCH
         merge:
           type: jsonpath
-          path: "$.resource.aws_vpc.terraform_vpc.tags"
+          path: "$.resource.aws_instance.windowsserver.tags"
         parameters:
           template: |
             {
-              "Name": "test_terraform_vpc_after_stitching_json_format"
+              "Name": "test_terraform_instance_after_stitching_json_format"
             }
 ---
 kind: Rules
