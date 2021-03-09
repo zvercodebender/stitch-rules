@@ -5,7 +5,6 @@ spec:
   - name: "terraform.ChangeInstanceName-json"
     condition:
       deployedType: terraform.ExecutedModule
-      postProcessing: true
       expression: "#input.getStringValue('$.resource') == 'aws_instance'"
     processor:
       - type: freemarker
