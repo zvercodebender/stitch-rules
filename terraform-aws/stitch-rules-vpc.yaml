@@ -2,7 +2,7 @@ kind: Rules
 metadata:
   namespace: Terraform-AWS-Demo
 spec:
-  - name: "k8s.ChangeInstanceName-json"
+  - name: "terraform.ChangeInstanceName-json"
     condition:
       deployedType: terraform.ExecutedModule
     processor:
