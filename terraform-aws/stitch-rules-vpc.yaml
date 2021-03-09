@@ -11,7 +11,7 @@ spec:
         phase: PATCH
         merge:
           type: jsonpath
-          path: "resource.aws_instance.windowsserver.tags"
+          path: "module.windowsserver.aws_instance.windowsserver"
         parameters:
           template: |
             {
