@@ -5,7 +5,7 @@ spec:
   - name: "terraform.ChangeInstanceName-json"
     condition:
       deployedType: terraform.ExecutedModule
-      expression: "#input.getStringValue('$.resource') == 'aws_instance'"
+      expression: "#input.pathExists(\"$.resource.aws_instance.windowsserver\")"
     processor:
       - type: freemarker
         description: "change tag name of instance"
