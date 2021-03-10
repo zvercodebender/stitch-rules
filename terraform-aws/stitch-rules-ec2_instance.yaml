@@ -5,7 +5,7 @@ spec:
   - name: "terraform.ChangeInstanceName-json"
     condition:
       deployedType: terraform.ExecutedModule
-      expression: "#input.getStringList('$.resource[*]').contains('aws_instance')"
+      expression: "#input.getJsonNode('$.resource.aws_instance') != null"
     processor:
       - type: freemarker
         description: "change tag name of instance"
