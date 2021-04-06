@@ -6,7 +6,9 @@ spec:
     description: "Standard configuration for Java FE application in K8s PROD"
     condition:
       deployedType: k8s.Resources
-      expression: "#input.getStringValue('$.kind') == 'Deployment' && #ctx.deployedApplication != null && #ctx.deployedApplication.environment.name == 'rancher-test-test'"
+      expression: "#input.getStringValue('$.kind') == 'Deployment' &&
+                   #ctx.deployedApplication != null &&
+                   #ctx.currentDeployedApplication.environment.name == 'rancher-test-test'"
     processor:
       - type: patch
         description: "Changing replicas to 3 and setting resource limits"
