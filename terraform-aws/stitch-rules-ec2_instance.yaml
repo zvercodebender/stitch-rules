@@ -16,7 +16,7 @@ spec:
         parameters:
           template: |
             {
-              "Stitch": "test_terraform_instance_after_stitching_json_format"
+              "Stitch": "Paycom Demo"
             }
 ---
 kind: Rules
