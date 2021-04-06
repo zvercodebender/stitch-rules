@@ -8,8 +8,8 @@ spec:
       deployedType: k8s.Resources
       expression: "#input.getStringValue('$.kind') == 'Ingress' &&
                    #ctx.deployedApplication != null &&
-                   #ctx.deployedApplication.name == 'rest-o-rant-web'
-                   #ctx.deployedApplication.environment.name == 'rancher-test-test'"
+                   #ctx.currentDeployedApplication.name == 'rest-o-rant-web'
+                   #ctx.currentDeployedApplication.environment.name == 'rancher-test-test'"
     processor:
       - type: patch
         description: "Change Ingresss URL"
