@@ -6,7 +6,9 @@ spec:
     description: "Set Propper Ingress URL for test-test"
     condition:
       deployedType: k8s.Resources
-      expression: "#input.getStringValue('$.kind') == 'Ingress' && #ctx.deployedApplication != null && #ctx.currentDeployedApplication.environment.name == 'rancher-test-test'"
+      expression: "#input.getStringValue('$.kind') == 'Ingress' &&
+                  #ctx.deployedApplication != null &&
+                  #ctx.currentDeployedApplication.environment.name == 'rancher-test-test'"
     processor:
       - type: patch
         description: "Change Ingresss URL"
