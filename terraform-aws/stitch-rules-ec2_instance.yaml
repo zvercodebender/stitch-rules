@@ -16,7 +16,7 @@ spec:
         parameters:
           template: |
             {
-              "Stitch": "Paycom Demo"
+              "Stitch": "Stitch Meetup Demo"
             }
 ---
 kind: Rules
