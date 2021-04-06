@@ -8,7 +8,7 @@ spec:
       deployedType: k8s.Resources
       expression: "#input.getStringValue('$.kind') == 'Ingress' &&
                   #ctx.deployedApplication != null &&
-                  #ctx.currentDeployedApplication.name == 'rest-o-rant-web'
+                  #ctx.currentDeployedApplication.name == 'rest-o-rant-web' &&
                   #ctx.currentDeployedApplication.environment.name == 'rancher-test-test'"
     processor:
       - type: patch
