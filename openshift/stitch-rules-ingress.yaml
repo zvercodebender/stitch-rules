@@ -1,6 +1,6 @@
 kind: Rules
 metadata:
-  namespace: k8s-tutorial
+  namespace: openshift
 spec:
   - name: "k8s.SetProperIngressFromRoute"
     description: "Set Propper Ingress URL for test-test"
