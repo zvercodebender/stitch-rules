@@ -2,7 +2,7 @@ kind: Rules
 metadata:
   namespace: k8s-tutorial
 spec:
-  - name: "k8s.SetProperIngress"
+  - name: "k8s.SetProperIngressFromRoute"
     description: "Set Propper Ingress URL for test-test"
     condition:
       deployedType: k8s.Resources
