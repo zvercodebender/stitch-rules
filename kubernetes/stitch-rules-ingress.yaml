@@ -7,9 +7,9 @@ spec:
     condition:
       deployedType: k8s.Resources
       expression: "#input.getStringValue('$.kind') == 'Ingress' &&
-                   #ctx.deployedApplication != null &&
-                   #ctx.currentDeployedApplication.name == 'rest-o-rant-web' &&
-                   #ctx.currentDeployedApplication.environment.name == 'rancher-test-test'"
+                  #ctx.deployedApplication != null &&
+                  #ctx.currentDeployedApplication.name == 'rest-o-rant-web' &&
+                  #ctx.currentDeployedApplication.environment.name == 'rancher-test-test'"
     processor:
       - type: patch
         description: "Change Ingresss URL"
@@ -20,4 +20,4 @@ spec:
           patch:
             - op: replace
               path: "/spec/rules/0/host"
-              value: "broker-bistro.192.168.17.11.xip.io"
+              value: "broker-bistro.192.168.17.11.nip.io"

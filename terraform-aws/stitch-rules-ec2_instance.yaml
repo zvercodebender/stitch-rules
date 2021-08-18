@@ -1,0 +1,41 @@
+kind: Rules
+metadata:
+  namespace: Terraform-AWS-Demo
+spec:
+  - name: "terraform.ChangeInstanceName-json"
+    condition:
+      deployedType: terraform.ExecutedModule
+      expression: "#input.getJsonNode('$.resource.aws_instance') != null"
+    processor:
+      - type: freemarker
+        description: "change tag name of instance"
+        phase: PATCH
+        merge:
+          type: jsonpath
+          path: "$.resource.aws_instance.windowsserver[0].tags"
+        parameters:
+          template: |
+            {
+              "Stitch": "Stitch Meetup Demo"
+            }
+---
+kind: Rules
+metadata:
+  namespace: Terraform-AWS-Demo
+spec:
+  - name: "terraform.ChangeVPCName-hcl"
+    condition:
+      deployedType: terraform.ExecutedModule
+      expression: "#ctx.getCurrentDeployedApplication().getName() == 'tf-aws-hcl' && #input.getJsonNode(\"$.resource.aws_vpc.terraform_vpc[0]\") != null"
+    processor:
+      - type: freemarker
+        description: "change tag name of vpc"
+        phase: PATCH
+        merge:
+          type: jsonpath
+          path: "$.resource.aws_vpc.terraform_vpc[0].tags"
+        parameters:
+          template: |
+            {
+              "Name": "test_terraform_vpc_after_stitching_hcl_format"
+            }

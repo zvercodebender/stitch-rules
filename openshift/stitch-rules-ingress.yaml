@@ -1,0 +1,58 @@
+kind: Rules
+metadata:
+  namespace: openshift
+spec:
+  - name: "k8s.SetProperIngressFromRoute"
+    description: "Set Propper Ingress URL for test-test"
+    condition:
+      deployedType: k8s.Resources
+      expression: "#input.getStringValue('$.kind') == 'Route' &&
+                   #ctx.currentDeployedApplication != nul &&
+                   #ctx.currentDeployedApplication.environment.name == 'Rancher'"
+    processor:
+      - type: patch
+        description: "Change Ingresss URL"
+        phase: PATCH
+        merge:
+          type: overlay
+        parameters:
+          patch:
+            - op: replace
+              path: "/apiVersion"
+              value: "extensions/v1beta1"
+            - op: replace
+              path: "/kind"
+              value: "Ingress"
+            # - op: remove
+            #   path: "/apiVersion"
+      - type: patch
+        description: "Remove Host Info"
+        phase: PATCH
+        merge:
+          type: none
+        parameters:
+          patch:
+            - op: remove
+              path: "/spec"
+      - type: freemarker
+        description: "Adding first label to kubernetes spec"
+        phase: POST_FLIGHT
+        merge:
+          type: overlay
+        parameters:
+          template: |
+            { "metadata" : {
+               "labels": {
+                 "app": "app-z"
+               }
+              }
+            }
+      - type: freemarker
+        description: "adding host"
+        phase: POST_FLIGHT
+        merge:
+          type: jsonPath
+        parameters:
+          template: {"spec":{"rules":[{"host":"app-z.demo.192.168.7.65.xip.io","http":{"paths":[{"backend":{"serviceName":"app-z","servicePort":8080},"path":"/","pathType":"ImplementationSpecific"}]}}]}}
+
+#adminer.default.192.168.7.65.xip.io
