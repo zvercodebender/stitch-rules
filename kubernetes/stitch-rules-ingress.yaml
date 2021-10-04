@@ -20,4 +20,4 @@ spec:
           patch:
             - op: replace
               path: "/spec/rules/0/host"
-              value: "broker-bistro.192.168.17.11.xip.io"
+              value: "broker-bistro.192.168.17.11.nip.io"
