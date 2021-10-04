@@ -2,7 +2,7 @@ kind: Rules
 metadata:
   namespace: Kubernetes
 spec:
-  - name: "k8s.StandardJavaSvcProd"
+  - name: "Kubernetes.StandardJavaSvcProd"
     description: "Standard configuration for Java FE application in K8s PROD"
     condition:
       deployedType: Kubernetes:Resources
