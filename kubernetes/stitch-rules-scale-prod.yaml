@@ -5,10 +5,10 @@ spec:
   - name: "k8s.StandardJavaSvcProd"
     description: "Standard configuration for Java FE application in K8s PROD"
     condition:
-      deployedType: k8s.Resources
+      deployedType: Kubernetes:Resources
       expression: "@k8s.isDeployment"
     processor:
-      - type: "Kubernetes.ReplicasSizeMacro"
+      - type: "Kubernetes:ReplicasSizeMacro"
         description: "Change replicas size to dictionary sizes"
         phase: PATCH
         parameters:
