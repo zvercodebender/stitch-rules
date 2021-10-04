@@ -1,6 +1,6 @@
 kind: Rules
 metadata:
-  namespace: Kubernetes-Demo
+  namespace: Kubernetes
 spec:
   - name: "k8s.StandardJavaSvcProd"
     description: "Standard configuration for Java FE application in K8s PROD"

@@ -1,6 +1,6 @@
 kind: Macros
 metadata:
-  namespace: Kubernetes-Demo
+  namespace: Kubernetes
 spec:
   - name: "CpuMemoryLimitsMacro"
     description: "CPU and Memory Limits for the deployment"

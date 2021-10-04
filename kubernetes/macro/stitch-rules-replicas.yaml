@@ -1,6 +1,6 @@
 kind: Macros
 metadata:
-  namespace: Kubernetes-Demo
+  namespace: Kubernetes
 spec:
   - name: "ReplicasSizeMacro"
     description: "Replicas size for the deployment"

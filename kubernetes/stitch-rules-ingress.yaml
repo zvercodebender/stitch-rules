@@ -1,6 +1,6 @@
 kind: Rules
 metadata:
-  namespace: Kubernetes-Demo
+  namespace: Kubernetes
 spec:
   - name: "k8s.SetProperIngress"
     description: "Set Propper Ingress URL for test-test"
