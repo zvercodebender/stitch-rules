@@ -19,7 +19,7 @@ spec:
           patch:
             - op: replace
               path: "/spec/replicas"
-              value: 2
+              value: #{@dictionary.getValue('replicasSize')}
       - type: freemarker
         description: "Add CPU and Memory Limits"
         phase: POST_FLIGHT
