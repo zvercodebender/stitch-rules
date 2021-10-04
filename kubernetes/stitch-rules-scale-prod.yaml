@@ -7,8 +7,7 @@ spec:
     condition:
       deployedType: k8s.Resources
       expression: "#input.getStringValue('$.kind') == 'Deployment' &&
-                   #ctx.deployedApplication != null &&
-                   #ctx.currentDeployedApplication.environment.name == 'rancher-test-test'"
+                   #ctx.deployedApplication != null"
     processor:
       - type: patch
         description: "Changing replicas to 3 and setting resource limits"
