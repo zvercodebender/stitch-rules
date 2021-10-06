@@ -17,4 +17,4 @@ spec:
           patch:
             - op: replace
               path: "/spec/replicas"
-              value: "#{#params['replicasSize']}"
+              value: "#{@dictionary.getValue('replicasSize')}"
