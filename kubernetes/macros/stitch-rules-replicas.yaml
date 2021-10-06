@@ -7,13 +7,8 @@ spec:
     parameters:
       replicasSize: 1
     processor:
-      - type: patch
-        description: "Changing replicas to 3 and setting resource limits"
-        phase: POST_FLIGHT
-        merge:
-          type: overlay
+      - type: "common:PatchReplace"
+        description: "Change replicas size"
         parameters:
-          patch:
-            - op: replace
-              path: "/spec/replicas"
-              value: 2
+          path: "/spec/replicas"
+          value: "#{#params['replicasSize']}"
