@@ -23,4 +23,4 @@ spec:
           application: "NA"
           environment: "#{#ctx.getCurrentDeployedApplication().getEnvironment().getName()}"
         parameters:
-          templateFile: macro/label-template.ftl
+          templateFile: macros/templates/label-template.ftl
