@@ -2,7 +2,7 @@ kind: Rules
 metadata:
   namespace: Kubernetes
 spec:
-  - name: "k8s.AddFreemarkerLabels"
+  - name: "AddFreemarkerLabels"
     condition:
       deployedType: k8s.Resources
       expression: "#input.getStringValue('$.kind') == 'Deployment'"
