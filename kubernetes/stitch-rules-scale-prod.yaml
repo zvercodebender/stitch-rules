@@ -13,3 +13,9 @@ spec:
         phase: PATCH
         parameters:
           replicasSize: "#{@dictionary.getValue('replicasSize')}"
+      - type: "Kubernetes:CpuMemoryLimitsMacro"
+        description: "Add CPU and Memory Limits for production"
+        phase: PATCH
+        parameters:
+          cpuNumber: "#{@dictionary.getValue('cpuNumber')}"
+          memorySize: "#{@dictionary.getValue('memorySize')}"

@@ -1,26 +1,17 @@
-# kind: Rules
-# metadata:
-#   namespace: Kubernetes
-# spec:
-#   - name: "AddFreemarkerLabels"
-#     condition:
-#       deployedType: k8s.Resources
-#       expression: "#input.getStringValue('$.kind') == 'Deployment'"
-#     processor:
-#       - type: freemarker
-#         description: "Adding label to kubernetes spec"
-#         parameters:
-#           template: |
-#             { "metadata" : {
-#                "labels": {
-#                  "myApplication": "${ctx.getCurrentDeployedApplication().getName()}"
-#                }
-#               }
-#             }
-#       - type: freemarker
-#         description: "Adding app and env label"
-#         parameters:
-#           application: "NA"
-#           environment: "#{#ctx.getCurrentDeployedApplication().getEnvironment().getName()}"
-#         parameters:
-#           templateFile: macros/templates/label-template.ftl
+kind: Rules
+metadata:
+  namespace: Kubernetes
+spec:
+  - name: "AddLabels"
+    condition:
+      deployedType: k8s.Resources
+    processor:
+      - type: "k8s:AddLabelsMacro"
+        description: "Add labels macro"
+        phase: PATCH
+        parameters:
+          labels: "{\
+              \"scope\": \"#{@environment.nameContains('prod') ? 'production' : 'nonprod'}\",\
+              \"environment\": \"#{@environment.name}\",\
+              \"service\": \"k8s-stitch\"\
+            }"
